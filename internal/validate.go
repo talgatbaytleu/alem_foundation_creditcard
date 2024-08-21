@@ -1,10 +1,33 @@
 package internal
 
 import (
+	"fmt"
+	"os"
+
 	"creditcard/pkg"
 )
 
 func Validate() {
+	if len(Args) == 1 && Args[0] == "--stdin" && len(Stdin_var) > 0 {
+		for _, v := range Stdin_var {
+			if LuhnCheck(v) {
+				fmt.Println("OK")
+			} else {
+				fmt.Println("INCORRECT")
+			}
+		}
+	} else if len(Args) > 0 {
+		for _, v := range Args {
+			if LuhnCheck(v) {
+				fmt.Println("OK")
+			} else {
+				fmt.Fprintf(os.Stderr, "INCORRECT\n")
+				os.Exit(1)
+			}
+		}
+	} else {
+		os.Exit(1)
+	}
 }
 
 func LuhnCheck(s string) bool {
