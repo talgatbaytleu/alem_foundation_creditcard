@@ -1,13 +1,17 @@
 package main
 
 import (
+	"fmt"
+
 	"creditcard/internal"
 )
 
 func main() {
-	internal.InitFeature(internal.Feature_var)
-	// a := internal.LuhnGenerate("440043018", 2)
-	// fmt.Println(a)
+	// internal.InitFeature(internal.Feature_var)
+	a := internal.VerifyBrandOrIssuer("4400430180300003", "brands.txt")
+	fmt.Println(a)
+	b := internal.VerifyBrandOrIssuer("4400430180300003", "issuers.txt")
+	fmt.Println(b)
 	// fmt.Println(internal.Feature_var)
 	// fmt.Println(internal.Args)
 	// fmt.Println(len(internal.Args))
