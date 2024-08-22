@@ -7,17 +7,22 @@ import (
 	"creditcard/pkg"
 )
 
-func Validate() {
-	if len(Args) == 1 && Args[0] == "--stdin" && len(Stdin_var) > 0 {
-		for _, v := range Stdin_var {
+// Validating feature
+func ValidateFeature() {
+	// check if --stdin enabled
+	if len(ValidateCmd.Args()) == 0 && *ValidateStdin {
+		// if enabled
+		stdin_var := InitStdinVar()
+		for _, v := range stdin_var {
 			if LuhnCheck(v) {
 				fmt.Println("OK")
 			} else {
 				fmt.Println("INCORRECT")
 			}
 		}
-	} else if len(Args) > 0 {
-		for _, v := range Args {
+	} else if len(ValidateCmd.Args()) > 0 {
+		// if disabled
+		for _, v := range ValidateCmd.Args() {
 			if LuhnCheck(v) {
 				fmt.Println("OK")
 			} else {
@@ -30,6 +35,7 @@ func Validate() {
 	}
 }
 
+// Check for BIN for Luhn's alg, return bool
 func LuhnCheck(s string) bool {
 	if pkg.IsNumeric(s) && len(s) >= 12 && len(s) <= 16 {
 		s = pkg.ReverseString(s)
