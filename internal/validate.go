@@ -10,7 +10,7 @@ import (
 // Validating feature
 func ValidateFeature() {
 	// check if --stdin enabled
-	if len(ValidateCmd.Args()) == 0 && *ValidateStdin {
+	if len(ValidateCmd.Args()) == 0 && Args_len == 1 && *ValidateStdin {
 		// if enabled
 		stdin_var := InitStdinVar()
 		for _, v := range stdin_var {

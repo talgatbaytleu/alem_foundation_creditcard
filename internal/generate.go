@@ -32,7 +32,7 @@ func GenerateFeature() {
 	generated_slice := LuhnGenerate(target_str, asterisk_counter)
 
 	// checking if the --pick flag enabled
-	if len(GenerateCmd.Args()) == 1 && *GeneratePick {
+	if len(GenerateCmd.Args()) == 1 && Args_len == 2 && *GeneratePick {
 		// if enabled
 		randomNum := rand.Intn(len(generated_slice))
 		fmt.Println(generated_slice[randomNum])

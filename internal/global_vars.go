@@ -68,6 +68,7 @@ var (
 	// below variable just calls CheckFlags function
 	check_for_equal_sign = CheckFlags()
 	Feature_var          = InitFeatureVar()
+	Args_len             = len(os.Args[2:])
 )
 
 // Function to check is there any argument, if so it will be assigned to Feature_var, whick stores subcomand value

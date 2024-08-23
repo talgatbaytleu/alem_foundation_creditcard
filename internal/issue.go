@@ -26,7 +26,7 @@ func IssueFeature() {
 		os.Exit(1)
 	}
 	// validating brand and issuer were corresponding
-	if len(IssueCmd.Args()) > 0 {
+	if len(IssueCmd.Args()) > 0 || Args_len > 4 {
 		fmt.Println("Unknown flags")
 		os.Exit(1)
 	}
